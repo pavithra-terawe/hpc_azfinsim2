@@ -37,7 +37,7 @@ resource "random_password" "sp_password" {
 }
 resource "azuread_service_principal_password" "azfinsim" {
   service_principal_id = azuread_service_principal.azfinsim.id
-  value                = random_password.sp_password.result
+  #value                = random_password.sp_password.result
   end_date             = "2099-01-01T01:02:03Z"
   #-- ensure password doesn't change on subsequent invocations
   lifecycle {
