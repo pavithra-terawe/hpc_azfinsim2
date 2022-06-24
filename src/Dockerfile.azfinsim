@@ -3,12 +3,15 @@ FROM ubuntu:18.04
 LABEL Azure Compute
 RUN echo 'AzFinsim Simulator'
 RUN apt-get -y update && apt-get install
-RUN apt-get install -y --no-install-recommends htop lsof strace python3-pip python3-dev gcc
-RUN apt-get install -y python3-setuptools
+RUN DEBIAN_FRONTEND=noninteractive apt-get install software-properties-common -y
+RUN add-apt-repository ppa:deadsnakes/ppa
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends htop lsof strace python3.9 python3-pip gcc
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -y python3-setuptools
 RUN apt-get clean && rm -rf /var/lib/apt-lists/*
 RUN mkdir /azfinsim
 COPY requirements.txt /azfinsim
 WORKDIR /azfinsim
+RUN pip3 install --upgrade pip
 RUN pip3 install -r requirements.txt
 COPY azfinsim.py /azfinsim/
 COPY utils.py /azfinsim/
