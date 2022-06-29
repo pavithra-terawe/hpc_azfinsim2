@@ -24,7 +24,8 @@ resource "azurerm_resource_group" "azfinsim" {
 
 #-- Current user info using Azure cli 
 data "external" "UserAccount" {
-  program = ["az", "ad", "signed-in-user", "show", "--query", "{displayName:displayName, userPrincipalName:userPrincipalName, objectId:objectId}"]
+  # sometime "az ad signed-in-user show" this command executed values are not giving objectId
+  program = ["az", "ad", "signed-in-user", "show", "--query", "{displayName:displayName, userPrincipalName:userPrincipalName, objectId:id}"]
 }
 
 #-- Resource Tags: just add this line to resources to be tagged: 

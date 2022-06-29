@@ -1,7 +1,8 @@
 #-- Get the objectid for the Azure Batch Service (needed for batch provider registration & keyvault access policy)
 #-- [Note however that objectid should be constant: ddbf3205-c6bd-46ae-8127-60eb93363864]
 data "external" "batchservice" {
-  program = ["az", "ad", "sp", "show", "--id", "ddbf3205-c6bd-46ae-8127-60eb93363864", "--query", "{objectId:objectId}"]
+  # sometime "az ad sp show --id ddbf3205-c6bd-46ae-8127-60eb93363864" this command executed values are not giving objectId
+  program = ["az", "ad", "sp", "show", "--id", "ddbf3205-c6bd-46ae-8127-60eb93363864", "--query", "{objectId:id}"]
 }
 
 #-- This section is needed if your subscription is not setup for Azure Batch already

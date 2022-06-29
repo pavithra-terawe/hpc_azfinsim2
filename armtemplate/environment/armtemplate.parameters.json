@@ -1,0 +1,85 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters":  {
+        "location": {
+          "value": "westeurope"
+        },
+        "networkInterfaceName": {
+          "value": "azbatch-ni"
+        },
+        "networkSecurityGroupName": {
+          "value": "azbatch-nsg"
+        },
+        "networkSecurityGroupRules": {
+          "value": [  
+                {
+                  "name": "default-allow-ssh",
+                  "properties": {
+                    "priority": 1030,
+                    "protocol": "TCP",
+                    "access": "Allow",
+                    "direction": "Inbound",
+                    "sourceApplicationSecurityGroups": [],
+                    "destinationApplicationSecurityGroups": [],
+                    "sourceAddressPrefix": "*",
+                    "sourcePortRange": "*",
+                    "destinationAddressPrefix": "*",
+                    "destinationPortRange": "22"
+                  }
+                }
+              ]
+        },
+        "subnetName": {
+          "value": "default"
+        },
+        "publicIpAddressName": {
+          "value": "azbatch-ip"
+        },
+        "publicIpAddressType": {
+          "value": "Static"
+        },
+        "publicIpAddressSku": {
+          "value": "Standard"
+        },
+        "pipDeleteOption": {
+          "value": "Detach"
+        },
+        "virtualMachineName": {
+          "value": "azbatch"
+        },
+        "virtualNetworkName": {
+          "value": "azbatch-vnet"
+        },
+        "batchScriptFilePath": {
+          "value": "https://testdevtrawe.blob.core.windows.net/test/initbatch.sh?sp=r&st=2022-06-29T08:36:04Z&se=2038-06-29T16:36:04Z&sv=2021-06-08&sr=b&sig=%2BmgloMtJs6dG9XVs0QKFa6EYTZPb0QNq7BOIK4cINCI%3D"
+        },
+         "batchScriptFileName": {
+          "value": "initbatch.sh"
+        },
+        "virtualMachineComputerName": {
+          "value": "azbatch"
+        },
+        "osDiskType": {
+          "value": "Premium_LRS"
+        },
+        "osDiskDeleteOption": {
+          "value": "Delete"
+        },
+        "virtualMachineSize": {
+          "value": "Standard_DS1_v2"
+        },
+        "nicDeleteOption": {
+          "value": "Detach"
+        },
+        "adminUsername": {
+          "value": "deployeradmin"
+        },
+        "adminPassword": {
+          "value": "Terawe@12345"
+        },
+        "zone": {
+          "value": "1"
+        }
+      }
+}
