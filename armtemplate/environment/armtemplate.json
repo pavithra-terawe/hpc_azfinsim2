@@ -256,7 +256,7 @@
                   "parameters": {
                       "fileUris": {
                           "value": [
-                              "[parameters('batchScriptFilePath')]]"
+                              "[parameters('batchScriptFilePath')]"
                           ]
                       },
                       "commandToExecute": {
